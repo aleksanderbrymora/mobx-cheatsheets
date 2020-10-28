@@ -10,11 +10,11 @@ import WordCount from './WordCount';
 
 const Side = observer(() => {
 	/*
-	 * title input
-	 * how many words
-	 * language inputs
-	 * sorting options
-	 * button to generate a doc
+	 * [x] title input
+	 * [x] how many words
+	 * [ ] language inputs
+	 * [ ] sorting options
+	 * [ ] button to generate a doc
 	 */
 	const { sheet } = useMst();
 
