@@ -1,13 +1,17 @@
-import { Word } from './Word';
+import { Words } from './Word';
 
-it('should create word instance', () => {
-	const word = Word.create({
-		id: 1,
-		from: 'telefon',
-		to: 'phone',
+it('should create words instance with one word in it', () => {
+	const words = Words.create({
+		items: [
+			{
+				id: 1,
+				from: 'telefon',
+				to: 'phone',
+			},
+		],
 	});
 
-	expect(word).toStrictEqual({
+	expect(words.items[0]).toStrictEqual({
 		id: 1,
 		from: 'telefon',
 		to: 'phone',
