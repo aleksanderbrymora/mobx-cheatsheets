@@ -1,7 +1,7 @@
 import { onSnapshot, types } from 'mobx-state-tree';
 import { createContext, useContext } from 'react';
 import { Sheet } from './Sheet';
-import { Words } from './Word';
+import { Words } from './Words';
 
 export const RootModel = types.model({
 	sheet: Sheet,
@@ -13,9 +13,8 @@ let initialState = RootModel.create({
 		items: [],
 	},
 	sheet: {
-		from: 'polish',
-		to: 'english',
-		orderingDirection: 'no order',
+		fromLang: 'polish',
+		toLang: 'english',
 	},
 });
 
