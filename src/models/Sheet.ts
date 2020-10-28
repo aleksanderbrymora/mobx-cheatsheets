@@ -1,5 +1,4 @@
 import { types } from 'mobx-state-tree';
-import { capitalise } from 'src/utils/capitalise';
 
 export const orderTypes = ['asc', 'desc', 'no order'];
 
