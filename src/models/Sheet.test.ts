@@ -4,14 +4,14 @@ it('should create an instance of a sheet', () => {
 	const item = Sheet.create({
 		from: 'polish',
 		to: 'english',
-		ordering: 'no order',
+		orderingDirection: 'no order',
 	});
 
 	expect(item).toStrictEqual({
 		from: 'polish',
 		orderBy: 'no order',
 		to: 'english',
-		ordering: 'no order',
+		orderingDirection: 'no order',
 		title: '',
 	});
 });
