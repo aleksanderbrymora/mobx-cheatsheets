@@ -34,6 +34,9 @@ export const Words = types
 		remove(item: SnapshotIn<typeof Word>) {
 			destroy(item);
 		},
+		removeAll() {
+			self.items.forEach((i) => destroy(i));
+		},
 		flip() {
 			for (let index = 0; index < self.items.length; index++) {
 				self.items[index] = Word.create({
