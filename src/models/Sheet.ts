@@ -1,5 +1,4 @@
 import { types } from 'mobx-state-tree';
-import { capitalise } from 'src/utils/capitalise';
 
 export const orderTypes = ['asc', 'desc', 'no order'];
 
@@ -11,12 +10,12 @@ export const Sheet = types
 	})
 	.actions((self) => ({
 		changeFromLanuage(to: string) {
-			self.fromLang = capitalise(to);
+			self.fromLang = to;
 		},
 		changeToLanuage(to: string) {
-			self.toLang = capitalise(to);
+			self.toLang = to;
 		},
 		changeTitle(to: string) {
-			self.title = capitalise(to);
+			self.title = to;
 		},
 	}));

@@ -20,5 +20,5 @@ it('should update properties and capitalise ones that are a description', () => 
 	});
 
 	item.changeTitle('stuff');
-	expect(item.title).toBe('Stuff');
+	expect(item.title).toBe('stuff');
 });
