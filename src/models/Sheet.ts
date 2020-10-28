@@ -1,14 +1,22 @@
 import { types } from 'mobx-state-tree';
+import { capitalise } from 'src/utils/capitalise';
 
 export const orderTypes = ['asc', 'desc', 'no order'];
 
-export const Sheet = types.model({
-	ordering: types.enumeration('Order', ['asc', 'desc', 'no order']),
-	orderBy: types.optional(
-		types.enumeration('OrderBy', ['asc', 'desc', 'no order']),
-		'no order',
-	),
-	from: types.string, // from what language
-	to: types.string, // to what language
-	title: '',
-});
+export const Sheet = types
+	.model({
+		fromLang: types.string, // from what language
+		toLang: types.string, // to what language
+		title: '',
+	})
+	.actions((self) => ({
+		changeFromLanuage(to: string) {
+			self.fromLang = capitalise(to);
+		},
+		changeToLanuage(to: string) {
+			self.toLang = capitalise(to);
+		},
+		changeTitle(to: string) {
+			self.title = capitalise(to);
+		},
+	}));
