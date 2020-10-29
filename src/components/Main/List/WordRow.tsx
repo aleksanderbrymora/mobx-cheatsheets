@@ -15,7 +15,6 @@ export const WordRow: React.FC<Props> = observer(({ item }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const [editItem, setEditItem] = useState({ from: '', to: '' });
 	const inputRef = useRef<HTMLInputElement>(null);
-
 	const { from, to } = item;
 
 	const handleEditStart = () => {
