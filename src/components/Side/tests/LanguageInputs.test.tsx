@@ -1,7 +1,6 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
 import LanguageInputs from '../LanguageInputs';
-import { rootStore } from 'src/models/Root';
 
 it('renders two groups of a label and an input for language inputs', () => {
 	render(<LanguageInputs />);

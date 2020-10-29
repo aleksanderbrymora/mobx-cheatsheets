@@ -1,4 +1,4 @@
-import { Box, Flex } from '@chakra-ui/core';
+import { Box, Divider, Flex } from '@chakra-ui/core';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { useMst } from 'src/models/Root';
@@ -28,8 +28,9 @@ const Side = observer(() => {
 			>
 				<Box>
 					<TitleInput />
-					<WordCount />
 					<LanguageInputs />
+					<Divider my='2rem' />
+					<WordCount />
 					<Sorting />
 					<GenerateDoc />
 					<pre>{JSON.stringify(sheet, null, 2)}</pre>
