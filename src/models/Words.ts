@@ -29,7 +29,7 @@ export const Words = types
 	})
 	.actions((self) => ({
 		add(word: SnapshotIn<typeof Word> | Instance<typeof Word>) {
-			self.items.push(word);
+			self.items.unshift(word);
 		},
 		remove(item: SnapshotIn<typeof Word>) {
 			destroy(item);
