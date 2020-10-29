@@ -6,7 +6,14 @@ import Side from '../Side';
 
 const App = observer(() => {
 	return (
-		<Grid templateColumns='4fr 1fr' maxW='1200px' mx='auto' py='1rem' px='2rem'>
+		<Grid
+			templateColumns='4fr 1fr'
+			maxW='1200px'
+			mx='auto'
+			py='1rem'
+			px='2rem'
+			minH='100vh'
+		>
 			<Main />
 			<Side />
 		</Grid>

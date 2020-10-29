@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/core';
+import { Box, Flex } from '@chakra-ui/core';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { useMst } from 'src/models/Root';
@@ -19,13 +19,30 @@ const Side = observer(() => {
 	const { sheet } = useMst();
 
 	return (
-		<Box position='sticky' top='1rem'>
-			<TitleInput />
-			<WordCount />
-			<LanguageInputs />
-			<Sorting />
-			<GenerateDoc />
-			<pre>{JSON.stringify(sheet, null, 2)}</pre>
+		<Box position='sticky' top='1rem' height='100%' py='1rem'>
+			<Flex
+				flexDir='column'
+				justifyContent='space-between'
+				alignItems='center'
+				height='100%'
+			>
+				<Box>
+					<TitleInput />
+					<WordCount />
+					<LanguageInputs />
+					<Sorting />
+					<GenerateDoc />
+					<pre>{JSON.stringify(sheet, null, 2)}</pre>
+				</Box>
+
+				<Box>
+					<small>
+						Title and language inputs currently dont do anything and can be
+						ignored. They will be used later when i add the backend for more
+						functionality like suggestions
+					</small>
+				</Box>
+			</Flex>
 		</Box>
 	);
 });
