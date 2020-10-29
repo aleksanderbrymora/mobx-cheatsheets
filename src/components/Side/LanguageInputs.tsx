@@ -34,9 +34,11 @@ const LanguageInput: React.FC<LanguageProps> = ({ name, onChange, value }) => {
 		<Box>
 			<label htmlFor={`language-input-${name}`}>{capitalise(name)}</label>
 			<Input
+				data-testid='language-input'
 				onChange={handleChange}
 				value={value}
 				placeholder={capitalise(name)}
+				id={`language-input-${name}`}
 			/>
 		</Box>
 	);
