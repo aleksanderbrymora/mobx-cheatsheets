@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/core';
 import React from 'react';
 import WordInput from './WordInput';
-import WordList from './WordList';
+import WordList from './List';
 
 const Main = () => {
 	/*

@@ -5,7 +5,7 @@ import WordInput from '../WordInput';
 it('renders the component', () => {
 	render(<WordInput />);
 	const el = screen.getByTestId('word-input');
-	// expect(el).toBeInTheDocument();
+	expect(el).toBeInTheDocument();
 	expect(true).toBeTruthy();
 });
 
