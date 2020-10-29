@@ -1,8 +1,8 @@
-import { Box, Button, Flex, Heading, IconButton, Input } from '@chakra-ui/core';
+import { Flex, Heading, IconButton, Input } from '@chakra-ui/core';
+import { observer } from 'mobx-react';
 import { Instance } from 'mobx-state-tree';
 import React, { FormEvent, useRef, useState } from 'react';
 import { Word } from 'src/models/Words';
-import { observer } from 'mobx-react';
 
 interface Props {
 	item: Instance<typeof Word>;
@@ -53,41 +53,68 @@ export const WordRow: React.FC<Props> = observer(({ item }) => {
 					<FromToShow from={from} to={to} />
 				)}
 			</Flex>
-			<Flex ml='2rem'>
-				{isEditing ? (
-					<>
-						<IconButton
-							aria-label='confirm edit'
-							icon='check'
-							onClick={commitEdit}
-							mr='1rem'
-							isDisabled={!isValidEdit()}
-						/>
-						<IconButton
-							aria-label='discard edit'
-							icon='close'
-							onClick={() => setIsEditing(false)}
-						/>
-					</>
-				) : (
-					<>
-						<IconButton
-							aria-label='edit this word'
-							icon='edit'
-							mr='1rem'
-							onClick={handleEditStart}
-						/>
-						<IconButton
-							aria-label='delete this word'
-							icon='delete'
-							onClick={item.remove}
-						/>
-					</>
-				)}
-			</Flex>
+			<Buttons
+				isEditing={isEditing}
+				commitEdit={commitEdit}
+				handleEditStart={handleEditStart}
+				isValidEdit={isValidEdit}
+				item={item}
+				setIsEditing={setIsEditing}
+			/>
 		</Flex>
 	);
 });
+
+const Buttons: React.FC<{
+	isEditing: boolean;
+	commitEdit: () => void;
+	isValidEdit: () => boolean;
+	handleEditStart: () => void;
+	item: Instance<typeof Word>;
+	setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({
+	commitEdit,
+	isEditing,
+	isValidEdit,
+	handleEditStart,
+	item,
+	setIsEditing,
+}) => {
+	return (
+		<Flex ml='2rem'>
+			{isEditing ? (
+				<>
+					<IconButton
+						aria-label='confirm edit'
+						icon='check'
+						onClick={commitEdit}
+						mr='1rem'
+						isDisabled={!isValidEdit()}
+					/>
+					<IconButton
+						aria-label='discard edit'
+						icon='close'
+						onClick={() => setIsEditing(false)}
+					/>
+				</>
+			) : (
+				<>
+					<IconButton
+						aria-label='edit this word'
+						icon='edit'
+						mr='1rem'
+						onClick={handleEditStart}
+					/>
+					<IconButton
+						aria-label='delete this word'
+						icon='delete'
+						onClick={item.remove}
+					/>
+				</>
+			)}
+		</Flex>
+	);
+};
 
 const FromToShow: React.FC<{ from: string; to: string }> = ({ from, to }) => {
 	return (
