@@ -16,7 +16,7 @@ const Side = observer(() => {
 	 * [ ] sorting options
 	 * [ ] button to generate a doc
 	 */
-	const { sheet } = useMst();
+	const { words } = useMst();
 
 	return (
 		<Box position='sticky' top='1rem' height='100%' py='1rem'>
@@ -33,7 +33,7 @@ const Side = observer(() => {
 					<WordCount />
 					<Sorting />
 					<GenerateDoc />
-					<pre>{JSON.stringify(sheet, null, 2)}</pre>
+					<pre>{JSON.stringify(words.items, null, 2)}</pre>
 				</Box>
 
 				<Box>
