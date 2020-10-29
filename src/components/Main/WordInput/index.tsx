@@ -1,11 +1,12 @@
 import { Box, Flex, IconButton } from '@chakra-ui/core';
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import { useMst } from 'src/models/Root';
 import { Error } from './Error';
 import { SingleInput } from './SingleInput';
 
 const WordInput = () => {
 	const { words } = useMst();
+	const fromInputRef = useRef<HTMLInputElement>(null);
 	const [from, setFrom] = useState('');
 	const [to, setTo] = useState('');
 	const [error, setError] = useState<null | 'from' | 'to'>(null);
@@ -18,6 +19,7 @@ const WordInput = () => {
 			words.add({ from, to });
 			setTo('');
 			setFrom('');
+			fromInputRef.current?.focus();
 		}
 	};
 
@@ -36,16 +38,23 @@ const WordInput = () => {
 		<Box
 			mb='2rem'
 			zIndex={3}
-			rounded={15}
 			data-testid='word-input'
 			position='sticky'
 			top='1rem'
-			py='1rem'
+			p='1rem'
+			pb='2rem'
+			bg='gray.900'
+			boxShadow='xl'
 		>
 			{error && <Error what={error} close={() => setError(null)} />}
 			<form onSubmit={onAdd}>
 				<Flex alignItems='flex-end' justifyContent='space-between'>
-					<SingleInput name='from' value={from} onChange={setFrom} />
+					<SingleInput
+						inputRef={fromInputRef}
+						name='from'
+						value={from}
+						onChange={setFrom}
+					/>
 					<SingleInput name='to' value={to} onChange={setTo} />
 					<IconButton
 						aria-label='Add new word'

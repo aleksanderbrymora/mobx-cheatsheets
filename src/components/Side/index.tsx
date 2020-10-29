@@ -1,7 +1,6 @@
 import { Box, Divider, Flex } from '@chakra-ui/core';
 import { observer } from 'mobx-react';
 import React from 'react';
-import { useMst } from 'src/models/Root';
 import GenerateDoc from './GenerateDoc';
 import LanguageInputs from './LanguageInputs';
 import Sorting from './Sorting';
@@ -16,10 +15,9 @@ const Side = observer(() => {
 	 * [ ] sorting options
 	 * [ ] button to generate a doc
 	 */
-	const { words } = useMst();
 
 	return (
-		<Box position='sticky' top='1rem' height='100%' py='1rem'>
+		<Box position='sticky' top='1rem' maxH='90vh' py='1rem'>
 			<Flex
 				flexDir='column'
 				justifyContent='space-between'
@@ -33,7 +31,6 @@ const Side = observer(() => {
 					<WordCount />
 					<Sorting />
 					<GenerateDoc />
-					<pre>{JSON.stringify(words.items, null, 2)}</pre>
 				</Box>
 
 				<Box>
