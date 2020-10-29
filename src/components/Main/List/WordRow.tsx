@@ -1,6 +1,6 @@
-import { Box, Flex, Heading, IconButton, Input } from '@chakra-ui/core';
+import { Box, Button, Flex, Heading, IconButton, Input } from '@chakra-ui/core';
 import { Instance } from 'mobx-state-tree';
-import React, { useState } from 'react';
+import React, { FormEvent, useRef, useState } from 'react';
 import { Word } from 'src/models/Words';
 import { observer } from 'mobx-react';
 
@@ -11,20 +11,23 @@ interface Props {
 export const WordRow: React.FC<Props> = observer(({ item }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const [editItem, setEditItem] = useState({ from: '', to: '' });
+	const inputRef = useRef<HTMLInputElement>(null);
+
 	const { from, to } = item;
 
 	const handleEditStart = () => {
 		setIsEditing(true);
 		setEditItem({ from, to });
+		setTimeout(() => inputRef.current?.focus(), 1);
 	};
 
 	const commitEdit = () => {
 		const { from, to } = editItem;
 		if (isValidEdit()) {
-			item.changeFrom(from);
-			item.changeTo(to);
+			item.changeFrom(from.trim());
+			item.changeTo(to.trim());
+			setIsEditing(false);
 		}
-		setIsEditing(false);
 	};
 
 	const isValidEdit = (): boolean => editItem.to !== '' && editItem.from !== '';
@@ -40,7 +43,12 @@ export const WordRow: React.FC<Props> = observer(({ item }) => {
 		>
 			<Flex w='100%' justifyContent='space-around' alignItems='cente'>
 				{isEditing ? (
-					<FromToEdit item={editItem} change={setEditItem} />
+					<FromToEdit
+						inputRef={inputRef}
+						item={editItem}
+						change={setEditItem}
+						commitEdit={commitEdit}
+					/>
 				) : (
 					<FromToShow from={from} to={to} />
 				)}
@@ -97,25 +105,42 @@ const FromToEdit: React.FC<{
 			to: string;
 		}>
 	>;
-}> = ({ item, change }) => {
+	inputRef: React.RefObject<HTMLInputElement>;
+	commitEdit: () => void;
+}> = ({ item, change, inputRef, commitEdit }) => {
 	const { from, to } = item;
 	return (
-		<Flex>
-			<Input
-				variant='flushed'
-				value={from}
-				onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-					change((prev) => ({ ...prev, from: e.target.value }));
-				}}
-			/>
-			<Box mx='1rem'> - </Box>
-			<Input
-				variant='flushed'
-				value={to}
-				onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-					change((prev) => ({ ...prev, to: e.target.value }));
-				}}
-			/>
-		</Flex>
+		<form
+			onSubmit={(e: FormEvent<HTMLFormElement>) => {
+				e.preventDefault();
+				commitEdit();
+			}}
+		>
+			<Flex>
+				<Input
+					variant='flushed'
+					ref={inputRef}
+					value={from}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+						change((prev) => ({ ...prev, from: e.target.value }));
+					}}
+				/>
+				<Heading size='xl' mx='1rem'>
+					-
+				</Heading>
+				<Input
+					variant='flushed'
+					value={to}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+						change((prev) => ({ ...prev, to: e.target.value }));
+					}}
+				/>
+				<input
+					type='submit'
+					style={{ visibility: 'hidden', position: 'absolute' }}
+					value='submit'
+				/>
+			</Flex>
+		</form>
 	);
 };
