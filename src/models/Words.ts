@@ -5,9 +5,11 @@ import {
 	SnapshotIn,
 	types,
 } from 'mobx-state-tree';
+import { v4 } from 'uuid';
 
 export const Word = types
 	.model({
+		id: types.optional(types.string, v4()),
 		from: types.string,
 		to: types.string,
 	})
