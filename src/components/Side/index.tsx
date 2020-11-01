@@ -2,6 +2,7 @@ import { Box, Divider, Flex } from '@chakra-ui/core';
 import { observer } from 'mobx-react';
 import React from 'react';
 import GenerateDoc from './GenerateDoc';
+import ImportFromTxt from './ImportFromTxt';
 import LanguageInputs from './LanguageInputs';
 import Sorting from './Sorting';
 import TitleInput from './TitleInput';
@@ -30,6 +31,7 @@ const Side = observer(() => {
 					<Divider my='2rem' />
 					<WordCount />
 					<Sorting />
+					<ImportFromTxt />
 					<GenerateDoc />
 				</Box>
 
