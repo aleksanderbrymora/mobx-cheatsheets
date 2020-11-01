@@ -5,6 +5,8 @@ import {
 	SnapshotIn,
 	types,
 } from 'mobx-state-tree';
+import { exampleWords } from 'src/utils/exampleWords';
+import { parseInput } from 'src/utils/parseInput';
 import { v4 } from 'uuid';
 
 export const Word = types
@@ -28,6 +30,7 @@ export const Word = types
 export const Words = types
 	.model({
 		items: types.optional(types.array(Word), []),
+		input: types.optional(types.string, exampleWords()),
 	})
 	.actions((self) => ({
 		add(word: SnapshotIn<typeof Word> | Instance<typeof Word>) {
@@ -47,6 +50,13 @@ export const Words = types
 				});
 			}
 		},
+		updateInput(input: string) {
+			self.input = input;
+		},
+		importFromTxt() {
+			const items = parseInput(self.input);
+			items.forEach(([from, to]) => self.items.unshift({ from, to }));
+		},
 	}))
 	.views((self) => ({
 		get totalItems() {
@@ -62,5 +72,13 @@ export const Words = types
 			return [...self.items].sort((a, b) =>
 				('' + a.from).localeCompare(b.from),
 			);
+		},
+		get isInputValid() {
+			const pairs = self.input.split('\n');
+			for (let i = 0; i < pairs.length; i++) {
+				const [, to] = pairs[i].split('=');
+				if (!to) return false;
+			}
+			return true;
 		},
 	}));
