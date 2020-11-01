@@ -43,8 +43,9 @@ const WordInput = () => {
 			top='1rem'
 			p='1rem'
 			pb='2rem'
-			bg='gray.900'
+			bg='rgba(23,25,35, 0.8)'
 			boxShadow='xl'
+			style={{ backdropFilter: 'blur(15px)' }}
 		>
 			{error && <Error what={error} close={() => setError(null)} />}
 			<form onSubmit={onAdd}>
