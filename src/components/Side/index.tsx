@@ -6,6 +6,7 @@ import ImportFromTxt from './ImportFromTxt';
 import LanguageInputs from './LanguageInputs';
 import Sorting from './Sorting';
 import TitleInput from './TitleInput';
+import Transformations from './Transformations';
 import WordCount from './WordCount';
 
 const Side = observer(() => {
@@ -31,6 +32,7 @@ const Side = observer(() => {
 					<Divider my='2rem' />
 					<WordCount />
 					<Sorting />
+					<Transformations />
 					<ImportFromTxt />
 					<GenerateDoc />
 				</Box>

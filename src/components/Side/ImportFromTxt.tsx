@@ -46,15 +46,19 @@ const ImportFromTxt = observer(() => {
 					<ModalCloseButton />
 					<ModalBody>
 						<Text textAlign='center' my={1}>
-							Input definition, followed by a '=' and the translation. Separate
-							them with enter
+							Input definition, followed by a '=' (you can add the spaces around
+							the '=') and the translation. Separate them with enter, like this:
 						</Text>
+						<pre style={{ fontSize: 14, textAlign: 'center' }}>
+							definition=translation
+						</pre>
 						<Textarea
+							mt={3}
 							onChange={(e: ChangeEvent<HTMLInputElement>) =>
 								words.updateInput(e.target.value)
 							}
 							value={words.input}
-							h='90%'
+							h='85%'
 							placeholder={`stuff=rzeczy
 more stuff=wiecej rzeczy`}
 						/>
