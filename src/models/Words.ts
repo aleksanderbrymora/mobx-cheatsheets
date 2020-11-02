@@ -63,7 +63,7 @@ export const Words = types
 		get totalItems() {
 			return self.items.length;
 		},
-		get sortedWords(): Instance<typeof self.items> {
+		get sortedWords(): Instance<typeof Word>[] {
 			const { sheet } = rootStore;
 			switch (sheet.sortBy) {
 				case 'no sort':
@@ -73,14 +73,14 @@ export const Words = types
 					return [...self.items].sort(
 						(a, b) =>
 							(sheet.sortDir === 'ascending' ? 1 : -1) *
-							('' + a.to).localeCompare(b.to),
+							('' + a.from).localeCompare(b.from),
 					);
 
 				case 'translation':
 					return [...self.items].sort(
 						(a, b) =>
 							(sheet.sortDir === 'ascending' ? 1 : -1) *
-							('' + a.from).localeCompare(b.from),
+							('' + a.to).localeCompare(b.to),
 					);
 
 				default:

@@ -11,10 +11,10 @@ import {
 } from 'docx';
 import { cast, getType, Instance } from 'mobx-state-tree';
 import { rootStore } from 'src/models/Root';
-import { Words } from 'src/models/Words';
+import { Word, Words } from 'src/models/Words';
 import { saveAs } from 'file-saver';
 
-const prepareChildren = ({ items }: Instance<typeof Words>) => {
+const prepareChildren = (items: Instance<typeof Word>[]) => {
 	const children = items.map((pair) => [
 		new TextRun({
 			text: pair.from,
@@ -60,7 +60,7 @@ export const generateDoc = async () => {
 				new Paragraph({
 					style: 'cheat',
 					// Assingning the words as children (an array of pairs of words)
-					children: prepareChildren(cast(words.sortedWords)),
+					children: prepareChildren(words.sortedWords),
 					alignment: AlignmentType.JUSTIFIED,
 				}),
 			],
