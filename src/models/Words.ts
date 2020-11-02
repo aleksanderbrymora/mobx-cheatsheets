@@ -72,14 +72,14 @@ export const Words = types
 				case 'definition':
 					return [...self.items].sort(
 						(a, b) =>
-							(sheet.sortDir === 'ascending' ? -1 : 1) *
+							(sheet.sortDir === 'ascending' ? 1 : -1) *
 							('' + a.to).localeCompare(b.to),
 					);
 
 				case 'translation':
 					return [...self.items].sort(
 						(a, b) =>
-							(sheet.sortDir === 'ascending' ? -1 : 1) *
+							(sheet.sortDir === 'ascending' ? 1 : -1) *
 							('' + a.from).localeCompare(b.from),
 					);
 

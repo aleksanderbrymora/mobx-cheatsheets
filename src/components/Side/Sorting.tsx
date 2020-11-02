@@ -18,18 +18,18 @@ const Sorting = observer(() => {
 
 	return (
 		<Stack isInline>
-			<Select onChange={handleSortTypeChange}>
-				<option defaultChecked value='no sort'>
-					No sorting
-				</option>
+			<Select value={sheet.sortBy} onChange={handleSortTypeChange}>
+				<option value='no sort'>No sorting</option>
 				<option value='definition'>Definition</option>
 				<option value='translation'>Translation</option>
 			</Select>
-			<IconButton
-				onClick={handleSortDirectionChange}
-				aria-label='change sorting direction'
-				icon={sheet.sortDir === 'ascending' ? 'arrow-down' : 'arrow-up'}
-			/>
+			{sheet.sortBy !== 'no sort' && (
+				<IconButton
+					onClick={handleSortDirectionChange}
+					aria-label='change sorting direction'
+					icon={sheet.sortDir === 'ascending' ? 'arrow-down' : 'arrow-up'}
+				/>
+			)}
 		</Stack>
 	);
 });
