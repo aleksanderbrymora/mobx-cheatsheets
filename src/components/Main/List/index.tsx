@@ -9,8 +9,8 @@ const WordList = observer(() => {
 
 	return (
 		<Box>
-			{words.items.map((item, i) => (
-				<WordRow key={item.from + item.to + i} item={item} />
+			{words.sortedWords.map((item, i) => (
+				<WordRow key={item.id + i} item={item} />
 			))}
 		</Box>
 	);
