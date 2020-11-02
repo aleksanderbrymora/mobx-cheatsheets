@@ -63,7 +63,7 @@ export const Words = types
 		get totalItems() {
 			return self.items.length;
 		},
-		get sortedWords(): Instance<typeof self.items> {
+		get sortedWords(): Instance<typeof Word>[] {
 			const { sheet } = rootStore;
 			switch (sheet.sortBy) {
 				case 'no sort':
