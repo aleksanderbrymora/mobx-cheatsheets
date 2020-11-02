@@ -5,6 +5,7 @@ import {
 	SnapshotIn,
 	types,
 } from 'mobx-state-tree';
+import { capitalise } from 'src/utils/capitalise';
 import { exampleWords } from 'src/utils/exampleWords';
 import { parseInput } from 'src/utils/parseInput';
 import { v4 } from 'uuid';
@@ -57,6 +58,18 @@ export const Words = types
 		importFromTxt() {
 			const items = parseInput(self.input);
 			items.forEach(([from, to]) => self.items.unshift({ from, to }));
+		},
+		makeAllLowercase() {
+			self.items.forEach((i) => {
+				i.changeFrom(i.from.toLowerCase());
+				i.changeTo(i.to.toLowerCase());
+			});
+		},
+		makeAllWordsCapitalised() {
+			self.items.forEach((i) => {
+				i.changeFrom(capitalise(i.from));
+				i.changeTo(capitalise(i.to));
+			});
 		},
 	}))
 	.views((self) => ({
