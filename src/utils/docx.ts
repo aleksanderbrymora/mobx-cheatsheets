@@ -60,7 +60,7 @@ export const generateDoc = async () => {
 				new Paragraph({
 					style: 'cheat',
 					// Assingning the words as children (an array of pairs of words)
-					children: prepareChildren(words),
+					children: prepareChildren(words.sortedWords),
 					alignment: AlignmentType.JUSTIFIED,
 				}),
 			],
