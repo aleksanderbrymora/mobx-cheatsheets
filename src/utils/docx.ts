@@ -1,18 +1,18 @@
 import {
+	AlignmentType,
 	BorderStyle,
 	Document,
-	TableCell,
+	Packer,
 	Paragraph,
 	Table,
+	TableCell,
 	TableRow,
-	Packer,
-	AlignmentType,
 	TextRun,
 } from 'docx';
-import { cast, getType, Instance } from 'mobx-state-tree';
-import { rootStore } from 'src/models/Root';
-import { Word, Words } from 'src/models/Words';
 import { saveAs } from 'file-saver';
+import { Instance } from 'mobx-state-tree';
+import { rootStore } from 'src/models/Root';
+import { Word } from 'src/models/Words';
 
 const prepareChildren = (items: Instance<typeof Word>[]) => {
 	const children = items.map((pair) => [
