@@ -9,7 +9,7 @@ import {
 	AlignmentType,
 	TextRun,
 } from 'docx';
-import { Instance } from 'mobx-state-tree';
+import { cast, getType, Instance } from 'mobx-state-tree';
 import { rootStore } from 'src/models/Root';
 import { Words } from 'src/models/Words';
 import { saveAs } from 'file-saver';
@@ -60,7 +60,7 @@ export const generateDoc = async () => {
 				new Paragraph({
 					style: 'cheat',
 					// Assingning the words as children (an array of pairs of words)
-					children: prepareChildren(words.sortedWords),
+					children: prepareChildren(cast(words.sortedWords)),
 					alignment: AlignmentType.JUSTIFIED,
 				}),
 			],
