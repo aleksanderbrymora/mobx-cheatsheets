@@ -8,6 +8,7 @@ import {
 import { exampleWords } from 'src/utils/exampleWords';
 import { parseInput } from 'src/utils/parseInput';
 import { v4 } from 'uuid';
+import { rootStore } from './Root';
 
 export const Word = types
 	.model({
@@ -62,16 +63,31 @@ export const Words = types
 		get totalItems() {
 			return self.items.length;
 		},
-		get unsortedWords() {
-			return [...self.items];
-		},
-		get sortedWordsByTo() {
-			return [...self.items].sort((a, b) => ('' + a.to).localeCompare(b.to));
-		},
-		get sortedWordsByFrom() {
-			return [...self.items].sort((a, b) =>
-				('' + a.from).localeCompare(b.from),
-			);
+		get sortedWords() {
+			const { sheet } = rootStore;
+			switch (sheet.sortBy) {
+				case 'no sort':
+					return [...self.items];
+
+				case 'definition':
+					return [...self.items].sort(
+						(a, b) =>
+							(sheet.sortDir === 'ascending' ? -1 : 1) *
+							('' + a.to).localeCompare(b.to),
+					);
+
+				case 'translation':
+					return [...self.items].sort(
+						(a, b) =>
+							(sheet.sortDir === 'ascending' ? -1 : 1) *
+							('' + a.from).localeCompare(b.from),
+					);
+
+				default:
+					throw new Error(
+						'This should not happen at all, congrats for getting here',
+					);
+			}
 		},
 		get isInputValid() {
 			const pairs = self.input.split('\n');
