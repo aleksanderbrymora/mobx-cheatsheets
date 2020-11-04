@@ -1,10 +1,10 @@
 import { Grid } from '@chakra-ui/core';
 import { observer } from 'mobx-react';
 import React from 'react';
-import Main from '../Main';
-import Side from '../Side';
+import Main from 'src/pages/create/components/Main';
+import Side from './components/Side';
 
-const App = observer(() => {
+const Create = observer(() => {
 	return (
 		<Grid
 			templateColumns='4fr 1fr'
@@ -20,4 +20,4 @@ const App = observer(() => {
 	);
 });
 
-export default App;
+export default Create;

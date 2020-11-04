@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
-import { MstProvider } from './components/MstProvider';
+import App from './App';
+import { MstProvider } from './utils/MstProvider';
 import {
 	ThemeProvider,
 	theme,
