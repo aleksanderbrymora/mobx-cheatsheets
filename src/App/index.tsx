@@ -1,22 +1,35 @@
-import { observer } from 'mobx-react';
-import React from 'react';
+import { Spinner } from '@chakra-ui/core';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Create from 'src/pages/create';
-import Home from 'src/pages/home';
 
-const App = observer(() => {
+const Home = React.lazy(() => import('src/pages/home'));
+const Create = React.lazy(() => import('src/pages/create'));
+
+const App = () => {
 	return (
 		<Router>
-			<Switch>
-				<Route path='/'>
-					<Home />
-				</Route>
-				<Route path='/create'>
-					<Create />
-				</Route>
-			</Switch>
+			<Suspense
+				fallback={
+					<Spinner
+						size='xl'
+						position='absolute'
+						top='50%'
+						right='50%'
+						transform='translate(-50%, -50%)'
+					/>
+				}
+			>
+				<Switch>
+					<Route exact path='/create'>
+						<Create />
+					</Route>
+					<Route path='/'>
+						<Home />
+					</Route>
+				</Switch>
+			</Suspense>
 		</Router>
 	);
-});
+};
 
 export default App;

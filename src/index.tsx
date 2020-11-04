@@ -8,9 +8,6 @@ import {
 	CSSReset,
 	ColorModeProvider,
 } from '@chakra-ui/core';
-import { logRes } from './db';
-
-logRes();
 
 ReactDOM.render(
 	<React.StrictMode>
