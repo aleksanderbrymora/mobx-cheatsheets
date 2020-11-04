@@ -9,6 +9,7 @@ const App = () => {
 	return (
 		<Router>
 			<Suspense
+				unstable_expectedLoadTime={50}
 				fallback={
 					<Spinner
 						size='xl'

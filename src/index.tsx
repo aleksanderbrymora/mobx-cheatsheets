@@ -9,7 +9,9 @@ import {
 	ColorModeProvider,
 } from '@chakra-ui/core';
 
-ReactDOM.render(
+const root = document.getElementById('root') as HTMLElement;
+
+ReactDOM.unstable_createRoot(root).render(
 	<React.StrictMode>
 		<MstProvider>
 			<ThemeProvider theme={theme}>
@@ -20,5 +22,4 @@ ReactDOM.render(
 			</ThemeProvider>
 		</MstProvider>
 	</React.StrictMode>,
-	document.getElementById('root'),
 );
