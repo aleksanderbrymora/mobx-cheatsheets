@@ -24,7 +24,6 @@ const Navbar = () => {
 			alignItems='center'
 			py={3}
 		>
-			<ThemeToggle />
 			<RouterLink to='/'>
 				<Stack spacing={3} isInline align='center'>
 					<Heading>🧠</Heading>
@@ -33,7 +32,7 @@ const Navbar = () => {
 					</Heading>
 				</Stack>
 			</RouterLink>
-			<Stack isInline spacing={8} align='center'>
+			<Stack isInline spacing={5} align='center'>
 				<Stack isInline spacing={8}>
 					<Link fontSize={18}>
 						<RouterLink to='/'>Home</RouterLink>
@@ -48,6 +47,7 @@ const Navbar = () => {
 					/>
 					<Input type='phone' placeholder='Search' />
 				</InputGroup>
+				<ThemeToggle />
 			</Stack>
 		</Flex>
 	);

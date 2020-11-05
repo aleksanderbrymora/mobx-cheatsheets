@@ -6,10 +6,6 @@ const ThemeToggle = () => {
 
 	return (
 		<IconButton
-			position='absolute'
-			top='10px'
-			right='10px'
-			zIndex={3}
 			onClick={toggleColorMode}
 			aria-label='Toggle current theme'
 			icon={colorMode === 'light' ? 'moon' : 'sun'}
