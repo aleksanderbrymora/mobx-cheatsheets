@@ -1,8 +1,9 @@
 import { Box, Input } from '@chakra-ui/core';
+import { observer } from 'mobx-react';
 import React from 'react';
 import { useMst } from 'src/models/Root';
 
-const TitleInput = () => {
+const TitleInput = observer(() => {
 	const { sheet } = useMst();
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,6 +21,6 @@ const TitleInput = () => {
 			/>
 		</Box>
 	);
-};
+});
 
 export default TitleInput;
