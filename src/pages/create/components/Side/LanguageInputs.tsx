@@ -1,4 +1,4 @@
-import { Box, Flex, Input } from '@chakra-ui/core';
+import { Box, Flex, Input, Stack } from '@chakra-ui/core';
 import React from 'react';
 import { useMst } from 'src/models/Root';
 import { capitalise } from 'src/utils/capitalise';
@@ -8,14 +8,14 @@ const LanguageInputs = () => {
 		sheet: { changeFromLanuage, changeToLanuage, fromLang, toLang },
 	} = useMst();
 	return (
-		<Flex my='1rem'>
+		<Stack spacing={3} isInline my='1rem' justifyContent='space-between'>
 			<LanguageInput
 				name='from'
 				onChange={changeFromLanuage}
 				value={fromLang}
 			/>
 			<LanguageInput name='to' onChange={changeToLanuage} value={toLang} />
-		</Flex>
+		</Stack>
 	);
 };
 
@@ -34,6 +34,7 @@ const LanguageInput: React.FC<LanguageProps> = ({ name, onChange, value }) => {
 		<Box>
 			<label htmlFor={`language-input-${name}`}>{capitalise(name)}</label>
 			<Input
+				width='90%'
 				data-testid='language-input'
 				onChange={handleChange}
 				value={value}
