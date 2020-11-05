@@ -1,6 +1,7 @@
 import { Spinner } from '@chakra-ui/core';
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from 'src/shared/Navbar';
 
 const Home = React.lazy(() => import('src/pages/home'));
 const Create = React.lazy(() => import('src/pages/create'));
@@ -9,7 +10,6 @@ const App = () => {
 	return (
 		<Router>
 			<Suspense
-				unstable_expectedLoadTime={50}
 				fallback={
 					<Spinner
 						size='xl'
@@ -20,6 +20,7 @@ const App = () => {
 					/>
 				}
 			>
+				<Navbar />
 				<Switch>
 					<Route exact path='/create'>
 						<Create />
