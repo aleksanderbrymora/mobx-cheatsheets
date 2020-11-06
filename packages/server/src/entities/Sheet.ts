@@ -1,10 +1,11 @@
-import { Field, Int } from 'type-graphql';
+import { Field, Int, ObjectType } from 'type-graphql';
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne } from 'typeorm';
 import { Book } from './Book';
 import { MetaWithLanguages } from './shared/MetaWithLanguages';
 import { TranslationGroup } from './TranslationGroup';
 import { User } from './User';
 
+@ObjectType()
 @Entity()
 export class Sheet extends MetaWithLanguages {
 	@Field()

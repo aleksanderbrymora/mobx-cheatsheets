@@ -1,8 +1,9 @@
-import { Field, Int } from 'type-graphql';
+import { Field, Int, ObjectType } from 'type-graphql';
 import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
 import { Meta } from './shared/Meta';
 import { Sheet } from './Sheet';
 
+@ObjectType()
 @Entity()
 export class Book extends Meta {
 	@Field()

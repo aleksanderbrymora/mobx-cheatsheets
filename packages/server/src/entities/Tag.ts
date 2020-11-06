@@ -1,8 +1,9 @@
-import { Field } from 'type-graphql';
+import { Field, ObjectType } from 'type-graphql';
 import { Column, Entity, ManyToMany } from 'typeorm';
 import { Meta } from './shared/Meta';
 import { TranslationGroup } from './TranslationGroup';
 
+@ObjectType()
 @Entity()
 export class Tag extends Meta {
 	@Field()

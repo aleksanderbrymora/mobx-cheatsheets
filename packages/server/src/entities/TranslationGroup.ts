@@ -1,15 +1,10 @@
-import { Field } from 'type-graphql';
-import {
-	Entity,
-	JoinTable,
-	ManyToMany,
-	OneToMany,
-	PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Field, ObjectType } from 'type-graphql';
+import { Entity, JoinTable, ManyToMany, OneToMany } from 'typeorm';
 import { Meta } from './shared/Meta';
 import { Tag } from './Tag';
 import { Word } from './Word';
 
+@ObjectType()
 @Entity()
 export class TranslationGroup extends Meta {
 	@Field((_type) => [Word])

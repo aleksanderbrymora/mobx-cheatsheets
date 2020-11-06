@@ -1,9 +1,10 @@
-import { Field } from 'type-graphql';
+import { Field, ObjectType } from 'type-graphql';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Language } from './Language';
 import { Meta } from './shared/Meta';
 import { TranslationGroup } from './TranslationGroup';
 
+@ObjectType()
 @Entity()
 export class Word extends Meta {
 	@Field()

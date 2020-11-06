@@ -1,8 +1,9 @@
-import { Field } from 'type-graphql';
+import { Field, ObjectType } from 'type-graphql';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { Meta } from './shared/Meta';
 import { Word } from './Word';
 
+@ObjectType()
 @Entity()
 export class Language extends Meta {
 	@Field()
