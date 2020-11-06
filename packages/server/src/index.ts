@@ -1,3 +1,52 @@
 import 'reflect-metadata';
+import { ApolloServer } from 'apollo-server';
+import * as TypeORM from 'typeorm';
+import { buildSchema } from 'type-graphql';
 
-export const a = '';
+import { SheetResolver } from './resolvers/SheetResolver';
+
+import { Book } from './entities/Book';
+import { Language } from './entities/Language';
+import { Sheet } from './entities/Sheet';
+import { Tag } from './entities/Tag';
+import { TranslationGroup } from './entities/TranslationGroup';
+import { User } from './entities/User';
+import { Word } from './entities/Word';
+
+const bootstrap = async () => {
+	try {
+		// create TypeORM connection
+		await TypeORM.createConnection({
+			type: 'postgres',
+			database: 'cheats',
+			username: 'postgres', // fill this with your username
+			password: 'postgres', // and password
+			port: 5432, // and port
+			host: 'localhost', // and host
+			entities: [Book, Language, Sheet, Tag, TranslationGroup, User, Word],
+			synchronize: true,
+			logger: 'advanced-console',
+			logging: 'all',
+			dropSchema: true,
+			cache: false,
+		});
+
+		// build TypeGraphQL executable schema
+		const schema = await buildSchema({
+			resolvers: [SheetResolver],
+		});
+
+		// create mocked context
+
+		// Create GraphQL server
+		const server = new ApolloServer({ schema });
+
+		// Start the server
+		const { url } = await server.listen(4000);
+		console.log(`Server is running, GraphQL Playground available at ${url}`);
+	} catch (err) {
+		console.error(err);
+	}
+};
+
+bootstrap();

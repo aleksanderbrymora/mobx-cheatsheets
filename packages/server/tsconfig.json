@@ -8,6 +8,7 @@
 		"emitDecoratorMetadata": true,
 		"strict": true,
 		"strictNullChecks": true,
-		"allowJs": false
+		"allowJs": false,
+		"strictPropertyInitialization": false
 	}
 }
