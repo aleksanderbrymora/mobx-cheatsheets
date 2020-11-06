@@ -1,0 +1,11 @@
+{
+	"private": "true",
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"start:client": "yarn --cwd packages/client start",
+		"start:server": "yarn --cwd packages/server start",
+		"start": "yarn start:client && yarn start:server"
+	}
+}
