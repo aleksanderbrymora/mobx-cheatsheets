@@ -1,15 +1,15 @@
-import { Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Field } from 'type-graphql';
+import { Column, Entity, ManyToMany } from 'typeorm';
+import { Meta } from './shared/Meta';
 import { TranslationGroup } from './TranslationGroup';
-import { Word } from './Word';
 
 @Entity()
-export class Tag {
-	@PrimaryGeneratedColumn()
-	id: number;
-
+export class Tag extends Meta {
+	@Field()
 	@Column()
 	name: string;
 
-	@ManyToMany(() => TranslationGroup, group => group.tags)
-	translationGroups: TranslationGroup[]
+	@Field((_type) => [TranslationGroup])
+	@ManyToMany(() => TranslationGroup, (group) => group.tags)
+	translationGroups: TranslationGroup[];
 }
