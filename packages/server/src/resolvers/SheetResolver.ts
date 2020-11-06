@@ -8,4 +8,9 @@ export class SheetResolver {
 		const sheet = await Sheet.findOne(id);
 		return sheet;
 	}
+
+	@Query((_returns) => [Sheet], { nullable: true })
+	async sheets() {
+		return await Sheet.find();
+	}
 }
