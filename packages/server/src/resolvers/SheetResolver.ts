@@ -1,5 +1,10 @@
 import { Sheet } from '../entities/Sheet';
-import { Resolver } from 'type-graphql';
+import { Query, Resolver } from 'type-graphql';
 
 @Resolver(Sheet)
-export class SheetResolver {}
+export class SheetResolver {
+	@Query((_returns) => String)
+	sheet() {
+		return 'hey';
+	}
+}
