@@ -1,12 +1,15 @@
+import { Field } from 'type-graphql';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { Meta } from './shared/Meta';
 import { Word } from './Word';
 
 @Entity()
 export class Language extends Meta {
+	@Field()
 	@Column()
 	name: string;
 
+	@Field()
 	@Column({
 		type: 'varchar',
 		width: 20,
@@ -15,6 +18,7 @@ export class Language extends Meta {
 	})
 	flag: string;
 
+	@Field((_type) => [Word])
 	@OneToMany(() => Word, (word) => word.language)
 	words: Word[];
 }
