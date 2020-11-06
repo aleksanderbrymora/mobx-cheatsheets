@@ -3,7 +3,7 @@ import { ApolloServer } from 'apollo-server';
 import * as TypeORM from 'typeorm';
 import { buildSchema } from 'type-graphql';
 
-import { SheetResolver } from './resolvers/SheetResolver';
+import { SheetResolver } from './resolvers/Sheet';
 
 import { Book } from './entities/Book';
 import { Language } from './entities/Language';
