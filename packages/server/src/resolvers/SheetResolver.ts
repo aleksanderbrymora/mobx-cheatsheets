@@ -1,4 +1,4 @@
-import { Sheet } from 'src/entities/Sheet';
+import { Sheet } from '../entities/Sheet';
 import { Resolver } from 'type-graphql';
 
 @Resolver(Sheet)

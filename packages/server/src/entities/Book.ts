@@ -18,9 +18,9 @@ export class Book extends Meta {
 	@Column()
 	publisher: string;
 
-	@Field((_type) => Int)
-	@Column('year', { nullable: true })
-	published: number;
+	@Field((_type) => Int, { nullable: true })
+	@Column({ nullable: true })
+	published?: number;
 
 	@Field((_type) => [Sheet])
 	@ManyToMany(() => Sheet, (sheet) => sheet.books)

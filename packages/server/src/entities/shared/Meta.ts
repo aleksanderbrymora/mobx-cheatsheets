@@ -13,10 +13,10 @@ export abstract class Meta extends BaseEntity {
 	readonly id: string;
 
 	@Field()
-	@UpdateDateColumn('timestamptz')
-	updatedAt: string;
+	@UpdateDateColumn({ type: 'timestamp' })
+	updatedAt: Date;
 
 	@Field()
-	@CreateDateColumn('timestamptz')
-	createdAt: string;
+	@CreateDateColumn({ type: 'timestamp' })
+	createdAt: Date;
 }
