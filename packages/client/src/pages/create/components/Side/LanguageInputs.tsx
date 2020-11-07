@@ -2,7 +2,7 @@ import { Box, Input, Stack } from '@chakra-ui/core';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { useMst } from 'src/models/Root';
-import { capitalise } from 'src/utils/capitalise';
+import { capitalise } from '@cheats/utils';
 
 const LanguageInputs = observer(() => {
 	const {

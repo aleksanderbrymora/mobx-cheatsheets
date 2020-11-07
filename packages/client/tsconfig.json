@@ -18,5 +18,6 @@
 		"baseUrl": ".",
 		"experimentalDecorators": true
 	},
-	"include": ["src"]
+	"include": ["src"],
+	"references": [{ "path": "../utils" }]
 }

@@ -7,7 +7,6 @@ import { Book } from './entities/Book';
 import { Language } from './entities/Language';
 import { Sheet } from './entities/Sheet';
 import { Tag } from './entities/Tag';
-import { TranslationGroup } from './entities/TranslationGroup';
 import { User } from './entities/User';
 import { Word } from './entities/Word';
 
@@ -26,7 +25,7 @@ const bootstrap = async () => {
 			password: 'postgres', // and password
 			port: 5432, // and port
 			host: 'localhost', // and host
-			entities: [Book, Language, Sheet, Tag, TranslationGroup, User, Word],
+			entities: [Book, Language, Sheet, Tag, User, Word],
 			synchronize: true,
 			logger: 'simple-console',
 			logging: 'all',

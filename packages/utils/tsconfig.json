@@ -1,0 +1,6 @@
+{
+	"compilerOptions": {
+		"alwaysStrict": true,
+		"composite": true
+	}
+}

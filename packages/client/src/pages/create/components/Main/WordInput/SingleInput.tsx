@@ -1,6 +1,6 @@
 import { Box, Input } from '@chakra-ui/core';
 import React from 'react';
-import { capitalise } from 'src/utils/capitalise';
+import { capitalise } from '@cheats/utils';
 
 interface Props {
 	name: 'from' | 'to';
