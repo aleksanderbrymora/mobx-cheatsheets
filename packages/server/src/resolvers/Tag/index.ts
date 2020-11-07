@@ -1,22 +1,22 @@
-import { Book } from '../../entities/Book';
+import { Tag } from '../../entities/Tag';
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { BookInput } from './BookInput';
+import { TagInput } from './TagInput';
 
-@Resolver(Book)
-export class BookResolver {
-	@Query((_returns) => Book, { nullable: true })
-	async book(@Arg('id') id: string): Promise<Book | undefined> {
-		const book = await Book.findOne(id);
-		return book;
+@Resolver(Tag)
+export class TagResolver {
+	@Query((_returns) => Tag, { nullable: true })
+	async tag(@Arg('id') id: string): Promise<Tag | undefined> {
+		const tag = await Tag.findOne(id);
+		return tag;
 	}
 
-	@Query((_returns) => [Book], { nullable: true })
-	async books(): Promise<Book[]> {
-		return await Book.find();
+	@Query((_returns) => [Tag], { nullable: true })
+	async tags(): Promise<Tag[]> {
+		return await Tag.find();
 	}
 
-	@Mutation((_returns) => Book)
-	async addBook(@Arg('options') options: BookInput): Promise<Book> {
-		return await Book.create(options).save();
+	@Mutation((_returns) => Tag)
+	async addTag(@Arg('options') options: TagInput): Promise<Tag> {
+		return await Tag.create(options).save();
 	}
 }

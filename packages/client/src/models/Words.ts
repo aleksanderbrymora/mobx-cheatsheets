@@ -5,7 +5,7 @@ import {
 	SnapshotIn,
 	types,
 } from 'mobx-state-tree';
-import { capitalise } from 'src/utils/capitalise';
+import { capitalise } from '@cheats/utils';
 import { exampleWords } from 'src/utils/exampleWords';
 import { parseInput } from 'src/utils/parseInput';
 import { v4 } from 'uuid';

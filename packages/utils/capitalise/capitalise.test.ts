@@ -1,4 +1,4 @@
-import { capitalise } from './capitalise';
+import { capitalise } from '.';
 
 it('capitalises words', () => {
 	expect(capitalise('wow')).toBe('Wow');

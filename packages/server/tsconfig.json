@@ -10,5 +10,6 @@
 		"allowJs": false,
 		"strictPropertyInitialization": false,
 		"baseUrl": "."
-	}
+	},
+	"references": [{ "path": "../utils" }]
 }

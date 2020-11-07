@@ -7,12 +7,13 @@ import { Book } from './entities/Book';
 import { Language } from './entities/Language';
 import { Sheet } from './entities/Sheet';
 import { Tag } from './entities/Tag';
-import { TranslationGroup } from './entities/TranslationGroup';
 import { User } from './entities/User';
 import { Word } from './entities/Word';
 
 import { SheetResolver } from './resolvers/Sheet';
 import { BookResolver } from './resolvers/Book';
+import { TagResolver } from './resolvers/Tag';
+import { LanguageResolver } from './resolvers/Language';
 
 const bootstrap = async () => {
 	try {
@@ -24,7 +25,7 @@ const bootstrap = async () => {
 			password: 'postgres', // and password
 			port: 5432, // and port
 			host: 'localhost', // and host
-			entities: [Book, Language, Sheet, Tag, TranslationGroup, User, Word],
+			entities: [Book, Language, Sheet, Tag, User, Word],
 			synchronize: true,
 			logger: 'simple-console',
 			logging: 'all',
@@ -34,7 +35,7 @@ const bootstrap = async () => {
 
 		// build TypeGraphQL executable schema
 		const schema = await buildSchema({
-			resolvers: [SheetResolver, BookResolver],
+			resolvers: [SheetResolver, BookResolver, TagResolver, LanguageResolver],
 		});
 
 		// create mocked context
