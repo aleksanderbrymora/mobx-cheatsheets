@@ -16,9 +16,7 @@ export class SheetResolver {
 	}
 
 	@Mutation((_returns) => Sheet)
-	async addSheet(
-		@Arg('options', () => SheetInput) options: SheetInput,
-	): Promise<Sheet> {
+	async addSheet(@Arg('options') options: SheetInput): Promise<Sheet> {
 		return await Sheet.create(options).save();
 	}
 }

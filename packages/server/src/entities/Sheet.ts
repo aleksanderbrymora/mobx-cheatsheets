@@ -17,7 +17,7 @@ export class Sheet extends MetaWithLanguages {
 	containsProfanity: boolean;
 
 	@Field((_type) => Int)
-	@Column('int')
+	@Column({ type: 'int', default: 0 })
 	points: number;
 
 	@Field((_type) => User)
