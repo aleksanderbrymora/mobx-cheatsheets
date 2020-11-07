@@ -13,7 +13,7 @@ export class Sheet extends MetaWithLanguages {
 	title: string;
 
 	@Field()
-	@Column({ default: true })
+	@Column({ default: false })
 	containsProfanity: boolean;
 
 	@Field((_type) => Int)
