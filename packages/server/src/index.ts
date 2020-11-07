@@ -3,8 +3,6 @@ import { ApolloServer } from 'apollo-server';
 import * as TypeORM from 'typeorm';
 import { buildSchema } from 'type-graphql';
 
-import { SheetResolver } from './resolvers/SheetResolver';
-
 import { Book } from './entities/Book';
 import { Language } from './entities/Language';
 import { Sheet } from './entities/Sheet';
@@ -12,6 +10,9 @@ import { Tag } from './entities/Tag';
 import { TranslationGroup } from './entities/TranslationGroup';
 import { User } from './entities/User';
 import { Word } from './entities/Word';
+
+import { SheetResolver } from './resolvers/Sheet';
+import { BookResolver } from './resolvers/Book';
 
 const bootstrap = async () => {
 	try {
@@ -25,7 +26,7 @@ const bootstrap = async () => {
 			host: 'localhost', // and host
 			entities: [Book, Language, Sheet, Tag, TranslationGroup, User, Word],
 			synchronize: true,
-			logger: 'advanced-console',
+			logger: 'simple-console',
 			logging: 'all',
 			dropSchema: true,
 			cache: false,
@@ -33,7 +34,7 @@ const bootstrap = async () => {
 
 		// build TypeGraphQL executable schema
 		const schema = await buildSchema({
-			resolvers: [SheetResolver],
+			resolvers: [SheetResolver, BookResolver],
 		});
 
 		// create mocked context
