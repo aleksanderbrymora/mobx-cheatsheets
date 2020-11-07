@@ -14,6 +14,7 @@ import { Word } from './entities/Word';
 import { SheetResolver } from './resolvers/Sheet';
 import { BookResolver } from './resolvers/Book';
 import { TagResolver } from './resolvers/Tag';
+import { LanguageResolver } from './resolvers/Language';
 
 const bootstrap = async () => {
 	try {
@@ -35,7 +36,7 @@ const bootstrap = async () => {
 
 		// build TypeGraphQL executable schema
 		const schema = await buildSchema({
-			resolvers: [SheetResolver, BookResolver, TagResolver],
+			resolvers: [SheetResolver, BookResolver, TagResolver, LanguageResolver],
 		});
 
 		// create mocked context
