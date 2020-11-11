@@ -9,11 +9,13 @@ import { Sheet } from './entities/Sheet';
 import { Tag } from './entities/Tag';
 import { User } from './entities/User';
 import { Word } from './entities/Word';
+import { TranslationGroup } from './entities/TranslationGroup';
 
 import { SheetResolver } from './resolvers/Sheet';
 import { BookResolver } from './resolvers/Book';
 import { TagResolver } from './resolvers/Tag';
 import { LanguageResolver } from './resolvers/Language';
+import { WordResolver } from './resolvers/Word';
 
 const bootstrap = async () => {
 	try {
@@ -25,7 +27,7 @@ const bootstrap = async () => {
 			password: 'postgres', // and password
 			port: 5432, // and port
 			host: 'localhost', // and host
-			entities: [Book, Language, Sheet, Tag, User, Word],
+			entities: [Book, Language, Sheet, Tag, User, Word, TranslationGroup],
 			synchronize: true,
 			logger: 'simple-console',
 			logging: 'all',
@@ -35,10 +37,14 @@ const bootstrap = async () => {
 
 		// build TypeGraphQL executable schema
 		const schema = await buildSchema({
-			resolvers: [SheetResolver, BookResolver, TagResolver, LanguageResolver],
+			resolvers: [
+				SheetResolver,
+				BookResolver,
+				TagResolver,
+				LanguageResolver,
+				WordResolver,
+			],
 		});
-
-		// create mocked context
 
 		// Create GraphQL server
 		const server = new ApolloServer({ schema });
