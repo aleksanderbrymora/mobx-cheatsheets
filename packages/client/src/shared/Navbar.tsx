@@ -6,7 +6,6 @@ import {
 	InputGroup,
 	InputLeftElement,
 	Link,
-	LinkProps,
 	Stack,
 } from '@chakra-ui/core';
 import React from 'react';
