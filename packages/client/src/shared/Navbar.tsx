@@ -6,6 +6,7 @@ import {
 	InputGroup,
 	InputLeftElement,
 	Link,
+	LinkProps,
 	Stack,
 } from '@chakra-ui/core';
 import React from 'react';
@@ -34,11 +35,16 @@ const Navbar = () => {
 			</RouterLink>
 			<Stack isInline spacing={5} align='center'>
 				<Stack isInline spacing={8}>
-					<Link fontSize={18}>
-						<RouterLink to='/'>Home</RouterLink>
+					{/* Current workaround for the Link from Chakra to work with RRD */}
+					{/*
+      // @ts-ignore */}
+					<Link fontSize={18} as={RouterLink} to='/'>
+						Home
 					</Link>
-					<Link fontSize={18}>
-						<RouterLink to='/create'>Create</RouterLink>
+					{/*
+      // @ts-ignore */}
+					<Link fontSize={18} as={RouterLink} to='/create'>
+						Create
 					</Link>
 				</Stack>
 				<InputGroup>

@@ -4,6 +4,17 @@
 		{ "path": "./packages/server" },
 		{ "path": "./packages/utils" }
 	],
+	"compilerOptions": {
+		"composite": true,
+		"importHelpers": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"moduleResolution": "node",
+
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true
+	},
 	"files": [],
 	"include": [],
 	"exclude": ["**/node_modules"]

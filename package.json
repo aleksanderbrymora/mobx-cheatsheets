@@ -8,5 +8,10 @@
 		"start:server": "yarn --cwd packages/server start",
 		"start": "yarn start:client && yarn start:server",
 		"build:client": "yarn --cwd packages/client build"
-	}
+	},
+	"nohoist": [
+		"workspaces/**/webpack-dev-server",
+		"**/babel-loader",
+		"**/babel-jest"
+	]
 }

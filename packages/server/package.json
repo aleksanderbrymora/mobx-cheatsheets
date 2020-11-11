@@ -3,10 +3,12 @@
 	"version": "1.0.0",
 	"main": "index",
 	"license": "MIT",
+	"private": true,
 	"scripts": {
-		"start": "nodemon --exec ts-node ./src/index.ts"
+		"start": "ts-node-dev ./src/index.ts"
 	},
 	"dependencies": {
+		"@cheats/utils": "1.0.0",
 		"apollo-server": "^2.19.0",
 		"class-validator": "^0.12.2",
 		"graphql": "^15.4.0",
@@ -14,10 +16,9 @@
 		"reflect-metadata": "^0.1.13",
 		"ts-node": "^9.0.0",
 		"type-graphql": "^1.1.1",
-		"typeorm": "^0.2.29",
-		"@cheats/utils": "1.0.0"
+		"typeorm": "^0.2.29"
 	},
 	"devDependencies": {
-		"nodemon": "^2.0.6"
+		"ts-node-dev": "^1.0.0"
 	}
 }
