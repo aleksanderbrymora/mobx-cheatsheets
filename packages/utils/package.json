@@ -2,5 +2,9 @@
 	"name": "@cheats/utils",
 	"version": "1.0.0",
 	"main": "index",
-	"license": "MIT"
+	"license": "MIT",
+	"private": true,
+	"devDependencies": {
+		"typescript": "^4.0.5"
+	}
 }

@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"main": "index",
 	"license": "MIT",
+	"private": true,
 	"scripts": {
 		"start": "ts-node-dev ./src/index.ts"
 	},
