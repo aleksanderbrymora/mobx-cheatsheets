@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"start": "ts-node-dev ./src/index.ts"
+		"start": "nodemon --exec ts-node ./src/index.ts"
 	},
 	"dependencies": {
 		"@cheats/utils": "1.0.0",
@@ -21,6 +21,7 @@
 		"typeorm": "^0.2.29"
 	},
 	"devDependencies": {
+		"nodemon": "^2.0.6",
 		"ts-node-dev": "^1.0.0"
 	}
 }
