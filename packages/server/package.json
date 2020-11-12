@@ -10,8 +10,10 @@
 	"dependencies": {
 		"@cheats/utils": "1.0.0",
 		"apollo-server": "^2.19.0",
+		"axios": "^0.21.0",
 		"class-validator": "^0.12.2",
 		"graphql": "^15.4.0",
+		"node-html-parser": "^2.0.0",
 		"pg": "^8.4.2",
 		"reflect-metadata": "^0.1.13",
 		"ts-node": "^9.0.0",

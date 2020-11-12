@@ -1,16 +1,16 @@
 {
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"target": "esnext",
 		"module": "commonjs",
 		"lib": ["esnext", "esnext.asynciterable"],
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
 		"strict": true,
 		"strictNullChecks": true,
 		"allowJs": false,
 		"strictPropertyInitialization": false,
-		"baseUrl": "."
+		"baseUrl": ".",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"esModuleInterop": true
 	},
 	"references": [{ "path": "../utils" }]
 }

@@ -16,6 +16,7 @@ import { BookResolver } from './resolvers/Book';
 import { TagResolver } from './resolvers/Tag';
 import { LanguageResolver } from './resolvers/Language';
 import { WordResolver } from './resolvers/Word';
+import { TranslationGroupResolver } from './resolvers/TranslationGroup';
 
 const bootstrap = async () => {
 	try {
@@ -29,15 +30,16 @@ const bootstrap = async () => {
 			host: 'localhost', // and host
 			entities: [Book, Language, Sheet, Tag, User, Word, TranslationGroup],
 			synchronize: true,
-			logger: 'simple-console',
-			logging: 'all',
+			logger: 'debug',
 			dropSchema: true,
 			cache: false,
+			logging: 'all',
 		});
 
 		// build TypeGraphQL executable schema
 		const schema = await buildSchema({
 			resolvers: [
+				TranslationGroupResolver,
 				SheetResolver,
 				BookResolver,
 				TagResolver,
@@ -47,7 +49,12 @@ const bootstrap = async () => {
 		});
 
 		// Create GraphQL server
-		const server = new ApolloServer({ schema });
+		const server = new ApolloServer({
+			schema,
+			cacheControl: {
+				defaultMaxAge: 0,
+			},
+		});
 
 		// Start the server
 		const { url } = await server.listen(4000);
