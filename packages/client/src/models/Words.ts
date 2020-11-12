@@ -9,7 +9,8 @@ import { capitalise } from '@cheats/utils';
 import { exampleWords } from 'src/utils/exampleWords';
 import { parseInput } from 'src/utils/parseInput';
 import { v4 } from 'uuid';
-import { rootStore } from './Root';
+import { RootModel, rootStore } from './Root';
+import { isValidQuizletURL } from 'src/utils/validateQuizletURL';
 
 export const Word = types
 	.model({
@@ -71,7 +72,12 @@ export const Words = types
 				i.changeTo(capitalise(i.to));
 			});
 		},
-		quizlet(url: string) {},
+		importFromQuizlet(url: string) {
+			const { valid, title } = isValidQuizletURL(url);
+			if (valid && title) {
+				getParent<typeof RootModel>(self, 2).sheet.changeTitle(title);
+			}
+		},
 	}))
 	.views((self) => ({
 		get totalItems() {
