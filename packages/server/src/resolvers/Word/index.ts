@@ -1,5 +1,5 @@
-import { Word } from '../../entities/Word';
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
+import { Word } from '../../entities/Word';
 import { WordInput } from './WordInput';
 
 @Resolver(Word)

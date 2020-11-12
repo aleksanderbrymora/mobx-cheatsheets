@@ -5,13 +5,15 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"start": "ts-node-dev ./src/index.ts"
+		"start": "nodemon --exec ts-node ./src/index.ts"
 	},
 	"dependencies": {
 		"@cheats/utils": "1.0.0",
 		"apollo-server": "^2.19.0",
+		"axios": "^0.21.0",
 		"class-validator": "^0.12.2",
 		"graphql": "^15.4.0",
+		"node-html-parser": "^2.0.0",
 		"pg": "^8.4.2",
 		"reflect-metadata": "^0.1.13",
 		"ts-node": "^9.0.0",
@@ -19,6 +21,7 @@
 		"typeorm": "^0.2.29"
 	},
 	"devDependencies": {
+		"nodemon": "^2.0.6",
 		"ts-node-dev": "^1.0.0"
 	}
 }
