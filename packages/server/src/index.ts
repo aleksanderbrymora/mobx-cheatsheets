@@ -16,7 +16,7 @@ import { BookResolver } from './resolvers/Book';
 import { TagResolver } from './resolvers/Tag';
 import { LanguageResolver } from './resolvers/Language';
 import { WordResolver } from './resolvers/Word';
-import { TranslationGroupResolver } from './resolvers/TranslationGroup';
+import { QuizletResolver } from './resolvers/Quizlet';
 
 const bootstrap = async () => {
 	try {
@@ -39,12 +39,12 @@ const bootstrap = async () => {
 		// build TypeGraphQL executable schema
 		const schema = await buildSchema({
 			resolvers: [
-				TranslationGroupResolver,
 				SheetResolver,
 				BookResolver,
 				TagResolver,
 				LanguageResolver,
 				WordResolver,
+				QuizletResolver,
 			],
 		});
 
@@ -54,6 +54,7 @@ const bootstrap = async () => {
 			cacheControl: {
 				defaultMaxAge: 0,
 			},
+			tracing: true,
 		});
 
 		// Start the server
