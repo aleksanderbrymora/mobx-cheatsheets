@@ -71,6 +71,7 @@ export const Words = types
 				i.changeTo(capitalise(i.to));
 			});
 		},
+		quizlet(url: string) {},
 	}))
 	.views((self) => ({
 		get totalItems() {
