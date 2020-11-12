@@ -6,7 +6,7 @@ import cheerio from 'cheerio';
  * because for some reason I can't be bothered to implement a propper one...
  * @param {string} url a url to fetch html from
  */
-export const getQuizletPage = async (url: string) => {
+export const getQuizlet = async (url: string) => {
 	const query = `query GetQuizletPage($url: String!) { getQuizletPage(url: $url) }`;
 	const res = await fetch(
 		process.env.NODE_ENV !== 'production' ? 'http://localhost:4000/' : '',
@@ -24,7 +24,7 @@ export const getQuizletPage = async (url: string) => {
 };
 
 export const getQuizletWords = async (url: string) => {
-	const text = await getQuizletPage(url);
+	const text = await getQuizlet(url);
 	const $ = cheerio.load(text);
 	const pairs = $('.SetPage-term').text();
 	console.log(pairs);
