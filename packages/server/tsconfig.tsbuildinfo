@@ -4292,7 +4292,7 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "e3e70a19b25480ab40888d1267a461d617f87cc85ff53d5a79726beabf8251ba",
+        "version": "dcc738c107cd080432b5674d175125943dbeef6f30c16a5ff7eefe845f926eee",
         "signature": "ce2688067d792abdf8ae640d7a74283b539b4b9e134d1c61e3bf924cc3da99b2",
         "affectsGlobalScope": false
       },
@@ -4910,6 +4910,7 @@
       "baseUrl": "./",
       "rootDir": "./src",
       "outDir": "./build",
+      "resolveJsonModule": true,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {

@@ -10,8 +10,9 @@
 		"baseUrl": ".",
 		"rootDir": "./src",
 		"outDir": "./build",
-		"sourceMap": true
+		"sourceMap": true,
+		"resolveJsonModule": true
 	},
-	"include": ["./src/*"],
+	"include": ["./src/**/*"],
 	"references": [{ "path": "../utils" }]
 }
