@@ -8,9 +8,8 @@
 		"allowJs": false,
 		"strictPropertyInitialization": false,
 		"baseUrl": ".",
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"esModuleInterop": true
+		"rootDir": "./src",
+		"outDir": "./build"
 	},
 	"references": [{ "path": "../utils" }]
 }
