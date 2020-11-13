@@ -32,7 +32,7 @@ const bootstrap = async () => {
 			username: choose('postgres', process.env.DB_USERNAME), // fill this with your username
 			password: choose('postgres', process.env.DB_PASSWORD), // and password
 			port: 5432, // and port
-			host: choose('localhost', 'ec2-3-220-23-212.compute-1.amazonaws.com'),
+			host: choose('localhost', 'kandula.db.elephantsql.com'),
 			entities: [Book, Language, Sheet, Tag, User, Word, TranslationGroup],
 			synchronize: true,
 			logger: choose('debug', 'simple-console') as
@@ -42,7 +42,7 @@ const bootstrap = async () => {
 				| 'file',
 			dropSchema: process.env.NODE_ENV !== 'production',
 			cache: false,
-			logging: process.env.NODE_ENV !== 'production' ? 'all' : false,
+			logging: 'all',
 		});
 
 		// build TypeGraphQL executable schema
