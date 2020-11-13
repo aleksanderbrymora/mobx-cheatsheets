@@ -1,23 +1,15 @@
 import { Box, Divider, Flex } from '@chakra-ui/core';
 import { observer } from 'mobx-react';
 import React from 'react';
+import Import from './Actions/Import';
+import Transformations from './Actions/Transformations';
 import GenerateDoc from './GenerateDoc';
-import ImportFromTxt from './ImportFromTxt';
 import LanguageInputs from './LanguageInputs';
 import Sorting from './Sorting';
 import TitleInput from './TitleInput';
-import Transformations from './Transformations';
 import WordCount from './WordCount';
 
 const Side = observer(() => {
-	/*
-	 * [x] title input
-	 * [x] how many words
-	 * [ ] language inputs
-	 * [ ] sorting options
-	 * [ ] button to generate a doc
-	 */
-
 	return (
 		<Box position='sticky' top='1rem' maxH='90vh' py='1rem'>
 			<Flex
@@ -33,7 +25,7 @@ const Side = observer(() => {
 					<WordCount />
 					<Sorting />
 					<Transformations />
-					<ImportFromTxt />
+					<Import />
 					<GenerateDoc />
 				</Box>
 

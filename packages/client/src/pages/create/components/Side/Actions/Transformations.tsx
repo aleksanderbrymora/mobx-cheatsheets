@@ -18,7 +18,7 @@ const Transformations = () => {
 	return (
 		<Menu>
 			<MenuButton as={Button} w='100%'>
-				Word transformations
+				Actions
 			</MenuButton>
 			<MenuList>
 				<MenuGroup title='Transform words'>

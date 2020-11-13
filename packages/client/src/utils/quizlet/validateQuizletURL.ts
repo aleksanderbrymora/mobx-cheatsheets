@@ -1,4 +1,4 @@
-const urlReg = /https?:\/\/quizlet\.com\/.*\/(.*)\//g;
+const urlReg = /^https?:\/\/quizlet\.com\/.*\/\d*\/(.*)\/?$/g;
 
 export const isValidQuizletURL = (url: string) => {
 	const match1 = urlReg.exec(url);

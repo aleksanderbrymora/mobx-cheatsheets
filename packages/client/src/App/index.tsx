@@ -19,6 +19,7 @@ const App = () => {
 						transform='translate(-50%, -50%)'
 					/>
 				}
+				unstable_expectedLoadTime={500}
 			>
 				<Navbar />
 				<Switch>

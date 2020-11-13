@@ -1,3 +1,4 @@
+import { capitalise } from '@cheats/utils';
 import {
 	destroy,
 	getParent,
@@ -5,12 +6,10 @@ import {
 	SnapshotIn,
 	types,
 } from 'mobx-state-tree';
-import { capitalise } from '@cheats/utils';
 import { exampleWords } from 'src/utils/exampleWords';
 import { parseInput } from 'src/utils/parseInput';
 import { v4 } from 'uuid';
-import { RootModel, rootStore } from './Root';
-import { isValidQuizletURL } from 'src/utils/validateQuizletURL';
+import { rootStore } from './Root';
 
 export const Word = types
 	.model({
@@ -71,12 +70,6 @@ export const Words = types
 				i.changeFrom(capitalise(i.from));
 				i.changeTo(capitalise(i.to));
 			});
-		},
-		importFromQuizlet(url: string) {
-			const { valid, title } = isValidQuizletURL(url);
-			if (valid && title) {
-				getParent<typeof RootModel>(self, 2).sheet.changeTitle(title);
-			}
 		},
 	}))
 	.views((self) => ({
