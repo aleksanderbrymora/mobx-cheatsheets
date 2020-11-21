@@ -22,7 +22,7 @@ import { QuizletResolver } from './resolvers/Quizlet';
 const choose = <T>(dev: T, prod: T): T =>
 	process.env.NODE_ENV !== 'production' ? dev : prod;
 
-const bootstrap = async () => {
+(async () => {
 	dotenv.config();
 	const { NODE_ENV, DB_NAME, DB_USERNAME, DB_PASSWORD } = process.env;
 	try {
@@ -73,6 +73,4 @@ const bootstrap = async () => {
 	} catch (err) {
 		console.error(err);
 	}
-};
-
-bootstrap();
+})();
