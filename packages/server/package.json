@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "nodemon --exec ts-node ./src/index.ts",
 		"start": "tsc && node ./build/index.js",
-		"build": ""
+		"build": "webpack"
 	},
 	"dependencies": {
 		"@cheats/utils": "1.0.0",
