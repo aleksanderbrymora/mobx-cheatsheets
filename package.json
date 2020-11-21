@@ -5,7 +5,7 @@
 	],
 	"scripts": {
 		"start:client": "yarn --cwd packages/client start",
-		"start:server": "yarn --cwd packages/server start",
+		"start:server": "yarn --cwd packages/server dev",
 		"start": "yarn start:client && yarn start:server",
 		"build:client": "yarn --cwd packages/client build",
 		"test": "jest"

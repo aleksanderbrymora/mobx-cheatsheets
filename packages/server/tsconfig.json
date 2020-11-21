@@ -8,9 +8,12 @@
 		"allowJs": false,
 		"strictPropertyInitialization": false,
 		"baseUrl": ".",
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"esModuleInterop": true
+		"rootDir": "./src",
+		"outDir": "./build",
+		"sourceMap": true,
+		"resolveJsonModule": true
 	},
+	"include": ["./src/**/*"],
+	"exclude": ["node_modules/**/*"],
 	"references": [{ "path": "../utils" }]
 }

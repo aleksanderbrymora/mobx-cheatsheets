@@ -9,7 +9,7 @@ import {
 	TableRow,
 	TextRun,
 } from 'docx';
-import { saveAs } from 'file-saver';
+import { saveAs } from '@cheats/utils';
 import { Instance } from 'mobx-state-tree';
 import { rootStore } from 'src/models/Root';
 import { Word } from 'src/models/Words';
@@ -93,8 +93,6 @@ export const generateDoc = async () => {
 	});
 
 	Packer.toBlob(doc).then((blob) => {
-		console.log(blob);
 		saveAs(blob, sheet.title !== '' ? sheet.title + '.docx' : 'sheet.docx');
-		console.log('Document created successfully');
 	});
 };
