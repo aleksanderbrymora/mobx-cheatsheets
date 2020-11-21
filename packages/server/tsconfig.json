@@ -8,12 +8,12 @@
 		"allowJs": false,
 		"strictPropertyInitialization": false,
 		"baseUrl": ".",
-		"rootDir": "./src",
+		"rootDir": "api",
 		"outDir": "./build",
 		"sourceMap": true,
 		"resolveJsonModule": true
 	},
-	"include": ["./src/**/*"],
+	"include": ["api/**/*"],
 	"exclude": ["node_modules/**/*"],
 	"references": [{ "path": "../utils" }]
 }

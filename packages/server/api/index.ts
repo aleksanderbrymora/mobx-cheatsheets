@@ -24,13 +24,14 @@ const choose = <T>(dev: T, prod: T): T =>
 
 const bootstrap = async () => {
 	dotenv.config();
+	const { NODE_ENV, DB_NAME, DB_USERNAME, DB_PASSWORD } = process.env;
 	try {
 		// create TypeORM connection
 		await TypeORM.createConnection({
 			type: 'postgres',
-			database: choose('cheats', process.env.DB_NAME),
-			username: choose('postgres', process.env.DB_USERNAME), // fill this with your username
-			password: choose('postgres', process.env.DB_PASSWORD), // and password
+			database: choose('cheats', DB_NAME),
+			username: choose('postgres', DB_USERNAME), // fill this with your username
+			password: choose('postgres', DB_PASSWORD), // and password
 			port: 5432, // and port
 			host: choose('localhost', 'kandula.db.elephantsql.com'),
 			entities: [Book, Language, Sheet, Tag, User, Word, TranslationGroup],
@@ -40,7 +41,7 @@ const bootstrap = async () => {
 				| 'advanced-console'
 				| 'simple-console'
 				| 'file',
-			dropSchema: process.env.NODE_ENV !== 'production',
+			dropSchema: NODE_ENV !== 'production',
 			cache: false,
 			logging: 'all',
 		});
