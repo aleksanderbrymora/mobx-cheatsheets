@@ -1,22 +1,21 @@
 {
-	"references": [
-		{ "path": "./packages/client" },
-		{ "path": "./packages/server" },
-		{ "path": "./packages/utils" }
-	],
-	"compilerOptions": {
-		"composite": true,
-		"target": "esnext",
-		"importHelpers": true,
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"moduleResolution": "node",
-		"esModuleInterop": true,
+  "references": [
+    { "path": "./packages/client" },
+    { "path": "./packages/server" }
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "target": "esnext",
+    "importHelpers": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
 
-		"declaration": true,
-		"declarationMap": true,
-		"sourceMap": true
-	},
-	"files": [],
-	"exclude": ["**/node_modules/**/*"]
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "files": [],
+  "exclude": ["**/node_modules/**/*"]
 }
