@@ -1,23 +1,25 @@
 {
-	"private": "true",
-	"workspaces": [
-		"packages/*"
-	],
-	"scripts": {
-		"start:client": "yarn --cwd packages/client start",
-		"start:server": "yarn --cwd packages/server dev",
-		"start": "yarn start:client && yarn start:server",
-		"build:client": "yarn --cwd packages/client build",
-		"test": "jest"
-	},
-	"nohoist": [
-		"workspaces/**/webpack-dev-server",
-		"**/babel-loader",
-		"**/babel-jest"
-	],
-	"devDependencies": {
-		"@types/jest": "^26.0.15",
-		"jest": "^26.6.3",
-		"ts-jest": "^26.4.4"
-	}
+  "private": "true",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start:client": "yarn --cwd packages/client start",
+    "start:server": "yarn --cwd packages/server dev",
+    "start": "lerna run start",
+    "build:client": "yarn --cwd packages/client build",
+    "build": "lerna run build",
+    "test": "jest"
+  },
+  "nohoist": [
+    "workspaces/**/webpack-dev-server",
+    "**/babel-loader",
+    "**/babel-jest"
+  ],
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "lerna": "^3.22.1",
+    "ts-jest": "^26.4.4"
+  },
+  "name": "mobx-cheatsheets"
 }

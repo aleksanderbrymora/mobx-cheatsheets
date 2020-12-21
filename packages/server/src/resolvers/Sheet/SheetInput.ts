@@ -1,8 +1,8 @@
 import { Sheet } from 'src/entities/Sheet';
-import { Field, InputType, Int } from 'type-graphql';
+import { Field, InputType } from 'type-graphql';
 
 @InputType()
 export class SheetInput implements Partial<Sheet> {
-	@Field()
-	title: string;
+  @Field()
+  title: string;
 }
