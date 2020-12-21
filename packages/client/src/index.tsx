@@ -16,7 +16,8 @@ const client = new ApolloClient({
   uri:
     process.env.NODE_ENV === 'production'
       ? 'https://gimme-cheats-server.herokuapp.com/'
-      : 'http://localhost:4000',
+      : 'https://gimme-cheats-server.herokuapp.com/',
+  // : 'http://localhost:4000',
   cache: new InMemoryCache(),
 });
 
