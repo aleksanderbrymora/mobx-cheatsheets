@@ -45,7 +45,7 @@
   },
   "scripts": {
     "s": "yarn start",
-    "start": "PORT=3001 react-app-rewired start",
+    "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"

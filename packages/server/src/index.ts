@@ -3,6 +3,7 @@ import { ApolloServer } from 'apollo-server';
 import * as TypeORM from 'typeorm';
 import { buildSchema } from 'type-graphql';
 import dotenv from 'dotenv';
+import PostgressConnectionStringParser from 'pg-connection-string';
 
 import { Book } from './entities/Book';
 import { Language } from './entities/Language';
@@ -20,57 +21,74 @@ import { WordResolver } from './resolvers/Word';
 import { QuizletResolver } from './resolvers/Quizlet';
 
 const choose = <T>(dev: T, prod: T): T =>
-	process.env.NODE_ENV !== 'production' ? dev : prod;
+  process.env.NODE_ENV !== 'production' ? dev : prod;
 
 (async () => {
-	dotenv.config();
-	const { NODE_ENV, DB_NAME, DB_USERNAME, DB_PASSWORD } = process.env;
-	try {
-		// create TypeORM connection
-		await TypeORM.createConnection({
-			type: 'postgres',
-			database: choose('cheats', DB_NAME),
-			username: choose('postgres', DB_USERNAME), // fill this with your username
-			password: choose('postgres', DB_PASSWORD), // and password
-			port: 5432, // and port
-			host: choose('localhost', 'kandula.db.elephantsql.com'),
-			entities: [Book, Language, Sheet, Tag, User, Word, TranslationGroup],
-			synchronize: true,
-			logger: choose('debug', 'simple-console') as
-				| 'debug'
-				| 'advanced-console'
-				| 'simple-console'
-				| 'file',
-			dropSchema: NODE_ENV !== 'production',
-			cache: false,
-			logging: 'all',
-		});
+  dotenv.config();
 
-		// build TypeGraphQL executable schema
-		const schema = await buildSchema({
-			resolvers: [
-				SheetResolver,
-				BookResolver,
-				TagResolver,
-				LanguageResolver,
-				WordResolver,
-				QuizletResolver,
-			],
-		});
+  const connectionOptions = PostgressConnectionStringParser.parse(
+    process.env.DATABASE_URL || 'localhost',
+  );
 
-		// Create GraphQL server
-		const server = new ApolloServer({
-			schema,
-			cacheControl: {
-				defaultMaxAge: 0,
-			},
-			tracing: true,
-		});
+  // return createConnection(<ConnectionOptions>{
+  //   driver: {
+  //     type: process.env.TYPEORM_DRIVER_TYPE,
+  //     host: connectionOptions.host,
+  //     port: connectionOptions.port || 5432,
+  //     username: connectionOptions.user,
+  //     password: connectionOptions.password,
+  //     database: connectionOptions.database,
+  //   },
+  //   entities: [...this.entities],
+  //   subscribers: [...this.subscribers],
+  // }).catch(error => console.log(error));
 
-		// Start the server
-		const { url } = await server.listen(4000);
-		console.log(`Server is running, GraphQL Playground available at ${url}`);
-	} catch (err) {
-		console.error(err);
-	}
+  try {
+    // create TypeORM connection
+    await TypeORM.createConnection({
+      type: 'postgres',
+      host: connectionOptions.host as string,
+      port: parseInt(connectionOptions.port || '5432'),
+      username: connectionOptions.user,
+      password: connectionOptions.password,
+      database: connectionOptions.database as string,
+      entities: [Book, Language, Sheet, Tag, User, Word, TranslationGroup],
+      synchronize: true,
+      logger: choose('debug', 'simple-console') as
+        | 'debug'
+        | 'advanced-console'
+        | 'simple-console'
+        | 'file',
+      dropSchema: process.env.NODE_ENV !== 'production',
+      cache: false,
+      logging: 'all',
+    });
+
+    // build TypeGraphQL executable schema
+    const schema = await buildSchema({
+      resolvers: [
+        SheetResolver,
+        BookResolver,
+        TagResolver,
+        LanguageResolver,
+        WordResolver,
+        QuizletResolver,
+      ],
+    });
+
+    // Create GraphQL server
+    const server = new ApolloServer({
+      schema,
+      cacheControl: {
+        defaultMaxAge: 0,
+      },
+      tracing: true,
+    });
+
+    // Start the server
+    const { url } = await server.listen(process.env.PORT || 4000);
+    console.log(`Server is running, GraphQL Playground available at ${url}`);
+  } catch (err) {
+    console.error(err);
+  }
 })();

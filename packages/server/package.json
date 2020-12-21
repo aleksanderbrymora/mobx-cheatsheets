@@ -20,6 +20,7 @@
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "pg": "^8.4.2",
+    "pg-connection-string": "^2.4.0",
     "reflect-metadata": "^0.1.13",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.1.1",
