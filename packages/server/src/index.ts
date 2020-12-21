@@ -83,6 +83,7 @@ const choose = <T>(dev: T, prod: T): T =>
         defaultMaxAge: 0,
       },
       tracing: true,
+      cors: true,
     });
 
     // Start the server
