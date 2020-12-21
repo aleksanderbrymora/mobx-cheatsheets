@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { gql, useLazyQuery } from '@apollo/client';
 import {
   Box,
@@ -45,16 +46,10 @@ const ImportFromQuizlet = () => {
 
   useEffect(() => {
     const { valid } = isValidQuizletURL(quizlet);
-    if (valid) {
-      setIsValidUrl(true);
-    } else {
-      setIsValidUrl(false);
-    }
-    console.log({ quizlet, isValidUrl });
+    setIsValidUrl(valid);
   }, [quizlet]);
 
   useEffect(() => {
-    console.log({ data });
     if (data) {
       const {
         quizlet: { fromLanguage, toLanguage, title, words: quizletWords },
