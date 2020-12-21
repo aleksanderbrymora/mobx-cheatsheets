@@ -84,6 +84,7 @@ const choose = <T>(dev: T, prod: T): T =>
       },
       tracing: true,
       cors: true,
+      playground: true,
     });
 
     // Start the server
